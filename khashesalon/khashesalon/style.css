@@ -104,6 +104,7 @@ a {
 
 #content {
 	background-color: #000000; /* div color is black */
+	width: 500px;
 }
 
 a:active,
