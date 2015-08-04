@@ -150,3 +150,5 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+<?php function load_fonts(){wp_register_style('googleFonts','http://fonts.googleapis.com/css?family=Codystar|Buda:300');wp_enqueue_style('googleFonts');}add_action('wp_print_styles', 'load_fonts');?>
