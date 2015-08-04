@@ -570,6 +570,7 @@ a:active {
 	background: #000000;
 	background: hs1(0, 0%, 19%);
 	font-size: 14px;
+	color: #D6D6D6;
 }
 
 .main-navigation ul {
@@ -585,11 +586,10 @@ a:active {
 }
 
 .main-navigation a {
-	color: #fff;
+	color: #D6D6D6;
 	display: block;
-	padding: 1.3em 1em;
-	font-size: 14px;
-	font-size: 1.4rem;
+	padding: 0.7em;
+	font-size: 16px;
 	text-decoration: none;
 	line-height: 1.3em
 }
