@@ -620,8 +620,8 @@ a:active {
 
 .main-navigation li:hover > a,
 .main-navigation li.focus > a {
-	color: #d61fe0;
-	background: #4d4d4d;
+	color: #8B1C62;
+	background: #1E1E1E;
 }
 
 .main-navigation ul ul :hover > a,
