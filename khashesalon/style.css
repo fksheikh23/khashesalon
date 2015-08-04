@@ -58,7 +58,7 @@ body {
 	font-size: 12px;
 	font-family: Buda, Open Sans Condensed, Raleway;
 	line-height: 1.5;
-	background: #000000 url('images/bckground3.jpg');
+	background: #000000 url('images/nice.jpg');
 	background-size:cover;
 	text-align: center;
 	margin: 0;
@@ -103,8 +103,21 @@ a {
 
 #content {
 	background-color: #000000;
-	width: 500px;
 }
+
+#page {
+	background-color: #000000;
+	margin: 0 auto;
+	padding: 0;
+	width: 760px;
+	border: 0px solid #000;
+	text-align: left;
+	-moz-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	}
+
 
 a:active,
 a:hover {
@@ -138,8 +151,12 @@ small {
 	font-size: 80%;
 }
 
-#header { 
-	background: transparent url('images/banner.jpg') no-repeat bottom left; opacity: 0.7; 
+.site-branding { 
+	background: transparent url('images/purplegirl.jpg') no-repeat bottom left; opacity: 0.7; 
+	margin: 0 auto;
+	padding: 20px 0 25px 0;
+	width: 758px;
+	text-align: left;
 }
 
 #headerimg {
@@ -548,9 +565,9 @@ a:active {
 	width: 100%;
 	display: block;
 	clear: both;
-	font-family: 'Codystar', sans-serif;
+	font-family: 'Buda', sans-serif;
 	text-transform: uppercase;
-	background: #313131;
+	background: #000000;
 	background: hs1(0, 0%, 19%);
 	color: #fff;
 }
@@ -585,7 +602,7 @@ a:active {
 	left: -999em;
 	z-index: 99999;
 	background: #4d4d4d;
-	color: purple;
+	color: #8B1C62;
 }
 
 .main-navigation ul ul ul {
