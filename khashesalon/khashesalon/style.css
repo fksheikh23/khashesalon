@@ -53,9 +53,6 @@ html {
 	-ms-text-size-adjust:     100%;
 }
 
-div {
-	background-color: #000000;
-}
 
 body {
 	color: #696969;
@@ -103,6 +100,10 @@ template {
 
 a {
 	background-color: transparent;
+}
+
+#content {
+	background-color: #000000; /* div color is black */
 }
 
 a:active,
