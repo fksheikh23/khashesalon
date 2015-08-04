@@ -569,7 +569,7 @@ a:active {
 	text-transform: uppercase;
 	background: #000000;
 	background: hs1(0, 0%, 19%);
-	color: #fff;
+	font-size: 14px;
 }
 
 .main-navigation ul {
