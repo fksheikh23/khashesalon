@@ -322,6 +322,13 @@ h4,
 h5,
 h6 {
 	clear: both;
+	font-family: Codystar, Buda, Open Sans Condensed, Raleway;
+}
+
+.site-tite {
+	font-family: 'Codystar', Buda;
+	font-size: 30px;
+	color: 1E1E1E;
 }
 
 p {
@@ -345,7 +352,7 @@ address {
 
 pre {
 	background: #eee;
-	font-family: "Courier 10 Pitch", Courier, monospace;
+	font-family: Buda, Open Sans Condensed, Raleway;
 	font-size: 15px;
 	font-size: 0.9375rem;
 	line-height: 1.6;
@@ -359,7 +366,7 @@ code,
 kbd,
 tt,
 var {
-	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+	font-family: Codystar, Buda, Open Sans Condensed, Raleway;
 	font-size: 15px;
 	font-size: 0.9375rem;
 }
