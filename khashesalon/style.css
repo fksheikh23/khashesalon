@@ -101,6 +101,11 @@ a {
 	background-color: transparent;
 }
 
+#content {
+	background-color: #000000;
+	width: 500px;
+}
+
 a:active,
 a:hover {
 	outline: 0;
@@ -547,6 +552,7 @@ a:active {
 	text-transform: uppercase;
 	background: #313131;
 	background: hs1(0, 0%, 19%);
+	color: #fff;
 }
 
 .main-navigation ul {
@@ -564,6 +570,7 @@ a:active {
 .main-navigation a {
 	display: block;
 	text-decoration: none;
+	color: #fff;
 }
 
 .main-navigation ul ul {
