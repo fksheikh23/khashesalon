@@ -62,9 +62,11 @@ body {
 	margin: 0;
 }
 
-
+#primary{
+		border-bottom: dashed 1px #FF00FF;
+}
 .hr {
-	border-bottom: dashed 1px #AB82FF;
+	border-bottom: dashed 1px #FF00FF;
 } 
 
 article,
@@ -106,6 +108,7 @@ a {
 
 #content {
 	background-color: #000000;
+	border-bottom: dashed 1px #FF00FF;
 }
 
 #page {
@@ -127,7 +130,7 @@ a:hover {
 }
 
 abbr[title] {
-	border-bottom: 1px solid;
+
 }
 
 b,
@@ -188,14 +191,68 @@ sub {
 
 img {
 	border: 0;
+    padding:10px;
 	filter: grayscale(1);
-	-webkit-filter: grayscale(1);
+	-webkit-filter: grayscale(1) blur(1px);
+	width: 31%;
+	height: 31%;
 }
+
+}
+
+.photos{
+	margin: 0;
+	line-height: 0;
+  -webkit-column-count: 3;
+  -webkit-column-gap:   0px;
+  -moz-column-count:    3;
+  -moz-column-gap:      0px;
+  column-count:         3;
+  column-gap:           0px; 
+  -webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+  height: 240px;
+  width: 235px;
+  overflow: hidden;
+}
+
+.photos img {
+	display: inline;
+	margin: 5px;
+	height: 240px;
+	width: 235px;
+} 
+
 
 img:hover {
 	filter: none;
 	-webkit-filter: grayscale(0);
+	 -webkit-transform: rotate(-10deg);
+     -moz-transform: rotate(-10deg);
+       -o-transform: rotate(-10deg);
+      -ms-transform: rotate(-10deg);
+          transform: rotate(-10deg);
+
 }
+
+@media (max-width: 1200px) {
+  
+  }
+}
+@media (max-width: 1000px) {
+  
+}
+@media (max-width: 800px) {
+ 
+}
+@media (max-width: 400px) {
+  
+}
+
+
 svg:not(:root) {
 	overflow: hidden;
 }
@@ -207,7 +264,7 @@ figure {
 .hr {
 	box-sizing: content-box;
 	height: 0;
-	border-bottom: dashed 1px #AB82FF;
+	border-bottom: dashed 1px #FF00FF;
 }
 
 pre {
@@ -325,7 +382,6 @@ textarea {
 	font-size: 16px;
 	font-size: 1rem;
 	line-height: 1.5;
-	border-bottom: 1px solid #999;
 }
 
 h1,
@@ -341,9 +397,8 @@ h6 {
 
 p {
 	margin-bottom: 1.5em;
-	border-bottom: 1px solid #999;
 	background-color: #000000;
-    color: #bababa;
+    color: #990066;
     font-family: 'Buda';
     font-size: 11px;
     font-style: normal;
@@ -391,7 +446,6 @@ var {
 
 abbr,
 acronym {
-	border-bottom: 1px solid #999;
 	cursor: help;
 }
 
@@ -431,11 +485,12 @@ q:after {
 blockquote,
 q {
 	quotes: "" "";
+	font-weight: italic;
 }
 
 .hr {
 	background-color: #ccc;
-	border-bottom: dashed 1px #AB82FF;
+	border-bottom: dashed 1px #FF00FF;
 	height: 1px;
 	margin-bottom: 1.5em;
 }
@@ -467,10 +522,6 @@ dd {
 	margin: 0 1.5em 1.5em;
 }
 
-img {
-	height: auto; /* Make sure images are scaled correctly. */
-	max-width: 100%; /* Adhere to container width. */
-}
 
 table {
 	margin: 0 0 1.5em;
@@ -595,6 +646,8 @@ a:-webkit-any-link {
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
+
+
 .main-navigation {
 	position: relative;
 	float: left;
@@ -605,9 +658,7 @@ a:-webkit-any-link {
 	text-transform: uppercase;
 	background: #000000;
 	background: hs1(0, 0%, 19%);
-	font-size: 12px;
 	color: #D6D6D6;
-	border-bottom: 1px dashed #999;
 }
 
 .main-navigation ul {
@@ -626,7 +677,7 @@ a:-webkit-any-link {
 	color: #D6D6D6;
 	display: block;
 	padding: 0.7em;
-	font-size: 16px;
+	font-size: 14px;
 	text-decoration: none;
 	line-height: 1.3em
 }
@@ -816,18 +867,16 @@ a:-webkit-any-link {
 	clear: both;
 }
 
-.site-content {
-	border-bottom: dashed 1px #AB82FF;
-}
-
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
 .site-branding {
 	text-align: center;
 	background: transparent url('images/purplegirl.jpg') no-repeat bottom left; opacity: 0.7; 
-	margin: 0 auto;
-	width: 758px;
+	width: 760px;
+	height: 200px;
+	padding: 0px;
+	margin: 0px;
 }
 
 .site-title {
@@ -837,18 +886,29 @@ a:-webkit-any-link {
 	line-height: normal;
 	font-family: 'Codystar', Buda;
 	color: #1E1E1E;
+	background-color: transparent;
+	padding: 0px;
+	margin: 0px;
+	float: left;
 }
 
 #mastheader{
-	background-size: 758px 500px;
-	position: absolute;
 	top: 0px;
+}
+
+#colophon {
+	background-color: #000000;
+	color: #fff;
+	font-size: 11px;
 }
 
 .site-description {
 	font-weight: 100;
 	font-size: 20px;
 	padding: 0;
+	float:left;
+	background-color: transparent;
+	color: #ff3399;
 }
 
 .site-header {
@@ -1036,18 +1096,19 @@ object {
 --------------------------------------------------------------*/
 .site-footer {
 	padding: 2em;
-	font-family: sans-serif;
-	font-size: 16px;
+	font-family: 'Buda';
+	font-size: 12px;
 	font-size: 1.6rem;
 	color: #fff;
-	background: #313131;
+	background: #000000;
 }
 
 .site-footer a {
 	color: #fff;
+	
+}.site-info {
+	text-align: right;
 }
 
-.site-info {
-	text-align: center;
-}
+
 
