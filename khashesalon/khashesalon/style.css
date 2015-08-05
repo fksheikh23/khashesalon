@@ -49,10 +49,11 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 --------------------------------------------------------------*/
 html {
 	font-family: Buda;
-	-webkit-text-size-adjust: 100%;
-	-ms-text-size-adjust:     100%;
 }
 
+#main {
+	border-bottom: dashed 1px #AB82FF;
+}
 body {
 	color: #696969;
 	font-size: 12px;
@@ -62,7 +63,13 @@ body {
 	background-size:cover;
 	text-align: center;
 	margin: 0;
+	border-bottom: 1px dashed #999;
 }
+
+
+.hr {
+	border-bottom: dashed 1px #AB82FF;
+} 
 
 article,
 aside,
@@ -110,12 +117,12 @@ a {
 	margin: 0 auto;
 	padding: 0;
 	width: 760px;
-	border: 0px solid #000;
 	text-align: left;
 	-moz-border-radius: 10px;
 	-khtml-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
+	border-bottom: dashed 1px #AB82FF;
 	}
 
 
@@ -138,7 +145,7 @@ dfn {
 }
 
 h1 {
-	font-size: 2em;
+	font-size: 1.5em;
 	margin: 0.67em 0;
 }
 
@@ -151,17 +158,21 @@ small {
 	font-size: 80%;
 }
 
-.site-branding { 
-	background: transparent url('images/purplegirl.jpg') no-repeat bottom left; opacity: 0.7; 
-	margin: 0 auto;
-	padding: 20px 0 25px 0;
-	width: 758px;
-	text-align: left;
-}
+
 
 #headerimg {
 	margin: 0;
 	width: 740px;
+	cursor: auto;
+	display: inline;
+	font-family: Codystar, Buda, 'Open Sans Condensed', Raleway;
+	font-size: 59px;
+	font-style: normal;
+	font-weight: 300;
+	height: auto;
+	line-height: 59px;
+	text-align: left;
+	text-decoration: none;
 	}
 
 sub,
@@ -192,9 +203,10 @@ figure {
 	margin: 1em 40px;
 }
 
-hr {
+.hr {
 	box-sizing: content-box;
 	height: 0;
+	border-bottom: dashed 1px #AB82FF;
 }
 
 pre {
@@ -273,7 +285,7 @@ input[type="search"]::-webkit-search-decoration {
 }
 
 fieldset {
-	border: 1px solid #c0c0c0;
+	border-bottom: dashed 1px #AB82FF;
 	margin: 0 2px;
 	padding: 0.35em 0.625em 0.75em;
 }
@@ -313,6 +325,7 @@ textarea {
 	font-size: 16px;
 	font-size: 1rem;
 	line-height: 1.5;
+	border-bottom: 1px dashed #999;
 }
 
 h1,
@@ -325,14 +338,19 @@ h6 {
 	font-family: Codystar, Buda, Open Sans Condensed, Raleway;
 }
 
-.site-tite {
-	font-family: 'Codystar', Buda;
-	font-size: 30px;
-	color: 1E1E1E;
-}
 
 p {
 	margin-bottom: 1.5em;
+	border-bottom: 1px dashed #999;
+	background-color: #000000;
+    color: #bababa;
+    font-family: 'Buda';
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: 2px;
+    line-height: 2.2;
+    text-transform: uppercase;
 }
 
 dfn,
@@ -373,7 +391,7 @@ var {
 
 abbr,
 acronym {
-	border-bottom: 1px dotted #666;
+	border-bottom: 1px dashed #999;
 	cursor: help;
 }
 
@@ -392,6 +410,7 @@ big {
 --------------------------------------------------------------*/
 html {
 	box-sizing: border-box;
+	border-bottom: 1px dashed #999;
 }
 
 *,
@@ -401,7 +420,7 @@ html {
 }
 
 body {
-	background: #fff; /* Fallback for when there is no custom background color defined. */
+	border-bottom: 1px dashed #999;
 }
 
 blockquote:before,
@@ -416,9 +435,9 @@ q {
 	quotes: "" "";
 }
 
-hr {
+.hr {
 	background-color: #ccc;
-	border: 0;
+	border-bottom: dashed 1px #AB82FF;
 	height: 1px;
 	margin-bottom: 1.5em;
 }
@@ -460,6 +479,10 @@ table {
 	width: 100%;
 }
 
+#primary {
+	border-bottom: dashed 1px #AB82FF;
+}
+
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
@@ -467,7 +490,7 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	border: 1px solid;
+	border-bottom: dashed 1px #AB82FF;
 	border-color: #ccc #ccc #bbb;
 	border-radius: 3px;
 	background: #e6e6e6;
@@ -563,6 +586,18 @@ a:active {
 	outline: 0;
 }
 
+a:-webkit-any-link {
+    color: #fff;
+    cursor: auto;
+}
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    text-decoration: none;
+    cursor: auto;
+	color: #fff;
+}
+
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
@@ -576,8 +611,9 @@ a:active {
 	text-transform: uppercase;
 	background: #000000;
 	background: hs1(0, 0%, 19%);
-	font-size: 14px;
+	font-size: 12px;
 	color: #D6D6D6;
+	border-bottom: 1px dashed #999;
 }
 
 .main-navigation ul {
@@ -786,6 +822,45 @@ a:active {
 	clear: both;
 }
 
+.site-content {
+	border-bottom: dashed 1px #AB82FF;
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.site-branding {
+	text-align: center;
+	background: transparent url('images/purplegirl.jpg') no-repeat bottom left; opacity: 0.7; 
+	margin: 0 auto;
+	width: 758px;
+}
+
+.site-title {
+	font-weight: 700;
+	font-size: 60px;
+	text-transform: uppercase;
+	line-height: normal;
+	font-family: 'Codystar', Buda;
+	color: #1E1E1E;
+}
+
+#mastheader{
+	background-size: 758px 500px;
+	position: absolute;
+	top: 0px;
+}
+
+.site-description {
+	font-weight: 100;
+	font-size: 20px;
+	padding: 0;
+}
+
+.site-header {
+	padding: none;
+}
+
 /*--------------------------------------------------------------
 # Widgets
 --------------------------------------------------------------*/
@@ -822,6 +897,10 @@ a:active {
 	display: none;
 }
 
+#content {
+	border-bottom: dashed 1px #AB82FF;
+}
+
 .single .byline,
 .group-blog .byline {
 	display: inline;
@@ -836,6 +915,10 @@ a:active {
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+}
+
+.entry-content {
+	border-bottom: 1px dashed #999;
 }
 
 /*--------------------------------------------------------------
@@ -980,3 +1063,4 @@ object {
 .site-info {
 	text-align: center;
 }
+
