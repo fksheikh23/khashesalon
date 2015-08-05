@@ -161,5 +161,5 @@ require get_template_directory() . '/inc/customizer.php';
  */
 require get_template_directory() . '/inc/jetpack.php';
 
-// Calling the file that controls the theme options on WordPress Dashboard
+// Calling the file that controls the customization of the theme (options page) on WordPress Dashboard
 require get_stylesheet_directory() .'/inc/options.php';
