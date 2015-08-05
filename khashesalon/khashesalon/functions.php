@@ -153,3 +153,6 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 function load_fonts(){wp_register_style('googleFonts','http://fonts.googleapis.com/css?family=Codystar|Buda:300');wp_enqueue_style('googleFonts');}add_action('wp_print_styles', 'load_fonts');
+
+add_filter( 'avatar_defaults', 'newgravatar' ); function newgravatar ($avatar_defaults) { $myavatar = get_stylesheet_directory_uri(). '/images/bckground3.jpg'; $avatar_defaults[$myavatar] = __('Salons Gravatar','khashesalon'); return $avatar_defaults; }
+wp_list_comments( array( 'avatar_size' => '80' ) ); 
