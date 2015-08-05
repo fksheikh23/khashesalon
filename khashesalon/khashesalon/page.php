@@ -8,6 +8,7 @@
  * different template.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
+ * Template Name:Page
  *
  * @package khashesalon
  */
