@@ -51,9 +51,6 @@ html {
 	font-family: Buda;
 }
 
-#main {
-	border-bottom: dashed 1px #AB82FF;
-}
 body {
 	color: #696969;
 	font-size: 12px;
@@ -63,7 +60,6 @@ body {
 	background-size:cover;
 	text-align: center;
 	margin: 0;
-	border-bottom: 1px dashed #999;
 }
 
 
@@ -122,7 +118,6 @@ a {
 	-khtml-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
-	border-bottom: dashed 1px #AB82FF;
 	}
 
 
@@ -132,7 +127,7 @@ a:hover {
 }
 
 abbr[title] {
-	border-bottom: 1px dotted;
+	border-bottom: 1px solid;
 }
 
 b,
@@ -193,8 +188,14 @@ sub {
 
 img {
 	border: 0;
+	filter: grayscale(1);
+	-webkit-filter: grayscale(1);
 }
 
+img:hover {
+	filter: none;
+	-webkit-filter: grayscale(0);
+}
 svg:not(:root) {
 	overflow: hidden;
 }
@@ -285,7 +286,6 @@ input[type="search"]::-webkit-search-decoration {
 }
 
 fieldset {
-	border-bottom: dashed 1px #AB82FF;
 	margin: 0 2px;
 	padding: 0.35em 0.625em 0.75em;
 }
@@ -325,7 +325,7 @@ textarea {
 	font-size: 16px;
 	font-size: 1rem;
 	line-height: 1.5;
-	border-bottom: 1px dashed #999;
+	border-bottom: 1px solid #999;
 }
 
 h1,
@@ -341,7 +341,7 @@ h6 {
 
 p {
 	margin-bottom: 1.5em;
-	border-bottom: 1px dashed #999;
+	border-bottom: 1px solid #999;
 	background-color: #000000;
     color: #bababa;
     font-family: 'Buda';
@@ -391,7 +391,7 @@ var {
 
 abbr,
 acronym {
-	border-bottom: 1px dashed #999;
+	border-bottom: 1px solid #999;
 	cursor: help;
 }
 
@@ -410,7 +410,6 @@ big {
 --------------------------------------------------------------*/
 html {
 	box-sizing: border-box;
-	border-bottom: 1px dashed #999;
 }
 
 *,
@@ -420,7 +419,6 @@ html {
 }
 
 body {
-	border-bottom: 1px dashed #999;
 }
 
 blockquote:before,
@@ -479,9 +477,6 @@ table {
 	width: 100%;
 }
 
-#primary {
-	border-bottom: dashed 1px #AB82FF;
-}
 
 /*--------------------------------------------------------------
 # Forms
@@ -490,7 +485,6 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	border-bottom: dashed 1px #AB82FF;
 	border-color: #ccc #ccc #bbb;
 	border-radius: 3px;
 	background: #e6e6e6;
@@ -897,10 +891,6 @@ a:-webkit-any-link {
 	display: none;
 }
 
-#content {
-	border-bottom: dashed 1px #AB82FF;
-}
-
 .single .byline,
 .group-blog .byline {
 	display: inline;
@@ -917,9 +907,6 @@ a:-webkit-any-link {
 	margin: 0 0 1.5em;
 }
 
-.entry-content {
-	border-bottom: 1px dashed #999;
-}
 
 /*--------------------------------------------------------------
 ## Asides
