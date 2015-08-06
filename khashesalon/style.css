@@ -63,8 +63,50 @@ body {
 }
 
 #primary{
-		border-bottom: dashed 1px #FF00FF;
+		border-bottom: dashed 1px #FF00FF;	
+		background: transparent url('images/glitter1.gif');
 }
+
+#post-276,
+#post-279,
+#post-274 {
+	border-bottom: dashed 1px #FF00FF;	
+}
+
+#range-logo {
+    background-image:url(http://s8.postimg.org/tk8wo9bit/starry12.gif);
+	color: #990066;
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	border-radius: 50px;
+	font-weight: bolder;
+}
+ 
+#range-logo2 {
+    background-image:url(http://s8.postimg.org/tk8wo9bit/starry12.gif);
+	color: #990066;
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	border-radius: 50px;
+	font-weight: bolder;
+}
+
+#range-logo3 {
+    background-image:url(http://s8.postimg.org/tk8wo9bit/starry12.gif);
+	color: #990066;
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	border-radius: 50px;
+	font-weight: bolder;
+}
+
+.postlogo{
+margin: 0 auto;
+}
+
 .hr {
 	border-bottom: dashed 1px #FF00FF;
 } 
@@ -330,9 +372,7 @@ input[type="radio"] {
 	padding: 0;
 }
 
-li {
-	text-align: left;
-}
+
 
 #recentcomments
 {
@@ -407,6 +447,7 @@ h5,
 h6 {
 	clear: both;
 	font-family: Codystar, Buda, Open Sans Condensed, Raleway;
+	background:transparent;
 }
 
 
@@ -421,6 +462,7 @@ p {
     letter-spacing: 2px;
     line-height: 2.2;
     text-transform: uppercase;
+	background: transparent; 
 }
 
 dfn,
@@ -894,11 +936,12 @@ a:-webkit-any-link {
 --------------------------------------------------------------*/
 .site-branding {
 	text-align: center;
-	background: transparent url('images/purplegirl.jpg') no-repeat bottom left; opacity: 0.7; 
+	background: transparent url('images/purplegirl.jpg') no-repeat bottom left; opacity: 0.6; 
 	width: 760px;
 	height: 200px;
-	padding: 0px;
 	margin: 0px;
+	border-radius: 25px;
+    padding: 20px; 
 }
 
 .site-title {
@@ -939,6 +982,7 @@ a:-webkit-any-link {
 
 .site-header {
 	padding: none;
+	
 }
 
 /*--------------------------------------------------------------
@@ -956,13 +1000,14 @@ a:-webkit-any-link {
 #secondary {
 	float: right;
 	background-color: #000;
-	opacity: 0.8;
-	width: 30%;
-	height: 75%;
 	color: #8B1C62;
+	opacity: 0.8;
+	width: 15%;
+	height: 75%;
 	position: relative;
-	left: 250px;
-	bottom: 1200px;
+	border-radius: 25px;
+	bottom: 1800px;
+	right: 40px;
 }
 
 .widget-area {
