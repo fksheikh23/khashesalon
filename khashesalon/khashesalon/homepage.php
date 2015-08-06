@@ -21,6 +21,23 @@
 		</div>
 		</div>
 		
+		<h1>Recent Posts</h1>
+		<ul>
+			<?php $the_query = new WP_Query( 'posts_per_page=3' ); ?>
+			
+			<?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
+
+			<li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></li>
+
+			<li><?php the_excerpt(__('(more…)')); ?></li>
+			
+			<?php endwhile; wp_reset_postdata(); ?>
+		</ul>
+		
+		<a href="https://phoenix.sheridanc.on.ca/~ccit2728/?p=279" title="ClickMe" id="range-logo">View Our Sale!</a>
+		<a href="https://phoenix.sheridanc.on.ca/~ccit2728/?p=276" title="ClickMe" id="range-logo2">Want To Meet Our Stylists?</a>
+		<a href="https://phoenix.sheridanc.on.ca/~ccit2728/?p=274" title="ClickMe" id="range-logo3">Stay Tuned!</a>
+
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
