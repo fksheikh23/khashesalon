@@ -161,5 +161,189 @@ require get_template_directory() . '/inc/customizer.php';
  */
 require get_template_directory() . '/inc/jetpack.php';
 
-// Calling the file that controls the customization of the theme (options page) on WordPress Dashboard
-require get_stylesheet_directory() .'/inc/options.php';
+
+function load_fonts(){wp_register_style('googleFonts','http://fonts.googleapis.com/css?family=Codystar|Buda:300');wp_enqueue_style('googleFonts');}add_action('wp_print_styles', 'load_fonts');
+
+add_filter( 'avatar_defaults', 'newgravatar' ); function newgravatar ($avatar_defaults) { $myavatar = get_stylesheet_directory_uri(). '/images/bckground3.jpg'; $avatar_defaults[$myavatar] = __('Salons Gravatar','khashesalon'); return $avatar_defaults; }
+wp_list_comments( array( 'avatar_size' => '80' ) ); 
+
+function new_excerpt_more($more) {global $post;return '<a class="moretag" href="'. get_permalink($post->ID) . '">...Read Our Full News Here</a>';}add_filter('excerpt_more', 'new_excerpt_more');
+
+//code for a custom field, it brings up the previous custom field if required or lets users add their own
+ add_action( 'loop_start', 'before_single_post_content' );
+function before_single_post_content() {
+if ( is_singular( 'post') ) {
+$cf = get_post_meta( get_the_ID(), 'custom_field_name', true );
+if( ! empty( $cf ) ) {
+echo '<div class="before-content">'. $cf .'</div>';
+    }
+  }
+}
+
+//code for meta box regarding a featured product box 
+function featured_product_of_the_week_get_meta( $value ) {
+	global $post;
+
+	$field = get_post_meta( $post->ID, $value, true );
+	if ( ! empty( $field ) ) {
+		return is_array( $field ) ? stripslashes_deep( $field ) : stripslashes( wp_kses_decode_entities( $field ) );
+	} else {
+		return false;
+	}
+}
+
+function featured_product_of_the_week_add_meta_box() {
+	add_meta_box(
+		'featured_product_of_the_week-featured-product-of-the-week',
+		__( 'Featured Product of the Week', 'featured_product_of_the_week' ),
+		'featured_product_of_the_week_featured_product_of_the_week_html',
+		'post',
+		'side',
+		'high'
+	);
+	add_meta_box(
+		'featured_product_of_the_week-featured-product-of-the-week',
+		__( 'Featured Product of the Week', 'featured_product_of_the_week' ),
+		'featured_product_of_the_week_featured_product_of_the_week_html',
+		'page',
+		'side',
+		'high'
+	);
+}
+add_action( 'add_meta_boxes', 'featured_product_of_the_week_add_meta_box' );
+
+function featured_product_of_the_week_featured_product_of_the_week_html( $post) {
+	wp_nonce_field( '_featured_product_of_the_week_featured_product_of_the_week_nonce', 'featured_product_of_the_week_featured_product_of_the_week_nonce' ); ?>
+
+	<p>
+		<label for="featured_product_of_the_week_featured_product_of_the_week_product_name"><?php _e( 'Product Name', 'featured_product_of_the_week' ); ?></label><br>
+		<textarea name="featured_product_of_the_week_featured_product_of_the_week_product_name" id="featured_product_of_the_week_featured_product_of_the_week_product_name" ><?php echo featured_product_of_the_week_get_meta( 'featured_product_of_the_week_featured_product_of_the_week_product_name' ); ?></textarea>
+	
+	</p>	<p>
+		<label for="featured_product_of_the_week_featured_product_of_the_week_price_range"><?php _e( 'Price Range', 'featured_product_of_the_week' ); ?></label><br>
+		<select name="featured_product_of_the_week_featured_product_of_the_week_price_range" id="featured_product_of_the_week_featured_product_of_the_week_price_range">
+			<option <?php echo (featured_product_of_the_week_get_meta( 'featured_product_of_the_week_featured_product_of_the_week_price_range' ) === '$0-20' ) ? 'selected' : '' ?>>$0-20</option>
+			<option <?php echo (featured_product_of_the_week_get_meta( 'featured_product_of_the_week_featured_product_of_the_week_price_range' ) === '$20-40' ) ? 'selected' : '' ?>>$20-40</option>
+			<option <?php echo (featured_product_of_the_week_get_meta( 'featured_product_of_the_week_featured_product_of_the_week_price_range' ) === '$40-60' ) ? 'selected' : '' ?>>$40-60</option>
+			<option <?php echo (featured_product_of_the_week_get_meta( 'featured_product_of_the_week_featured_product_of_the_week_price_range' ) === '$60-80' ) ? 'selected' : '' ?>>$60-80</option>
+			<option <?php echo (featured_product_of_the_week_get_meta( 'featured_product_of_the_week_featured_product_of_the_week_price_range' ) === '$80-100' ) ? 'selected' : '' ?>>$80-100</option>
+			<option <?php echo (featured_product_of_the_week_get_meta( 'featured_product_of_the_week_featured_product_of_the_week_price_range' ) === '$100+' ) ? 'selected' : '' ?>>$100+</option>
+		</select>
+	</p><?php
+}
+
+function featured_product_of_the_week_featured_product_of_the_week_save( $post_id ) {
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+	if ( ! isset( $_POST['featured_product_of_the_week_featured_product_of_the_week_nonce'] ) || ! wp_verify_nonce( $_POST['featured_product_of_the_week_featured_product_of_the_week_nonce'], '_featured_product_of_the_week_featured_product_of_the_week_nonce' ) ) return;
+	if ( ! current_user_can( 'edit_post', $post_id ) ) return;
+
+	if ( isset( $_POST['featured_product_of_the_week_featured_product_of_the_week_product_name'] ) )
+		update_post_meta( $post_id, 'Product Name', esc_attr( $_POST['featured_product_of_the_week_featured_product_of_the_week_product_name'] ) );
+	if ( isset( $_POST['featured_product_of_the_week_featured_product_of_the_week_price_range'] ) )
+		update_post_meta( $post_id, 'Price Range', esc_attr( $_POST['featured_product_of_the_week_featured_product_of_the_week_price_range'] ) );
+	else
+		update_post_meta( $post_id, 'featured_product_of_the_week_featured_product_of_the_week_is_this_product_currently_in_stock_', null );
+}
+add_action( 'save_post', 'featured_product_of_the_week_featured_product_of_the_week_save' );
+
+//Options Page
+
+
+function theme_settings_init(){
+    register_setting( 'theme_settings', 'theme_settings' );
+}
+
+function add_settings_page() {
+add_menu_page( __( 'Theme Settings' ), __( 'Theme Settings' ), 'manage_options', 'settings', 'theme_settings_page');
+}
+
+add_action( 'admin_init', 'theme_settings_init' );
+add_action( 'admin_menu', 'add_settings_page' );
+
+
+$color_scheme = array('default','blue','green',);
+
+
+function theme_settings_page() {
+
+if ( ! isset( $_REQUEST['updated'] ) )
+$_REQUEST['updated'] = false;
+
+
+global $color_scheme;
+?>
+
+<div>
+
+<div id="icon-options-general"></div>
+<h2><?php _e( 'Options Page' )  ?></h2>
+
+<?php
+
+if ( false !== $_REQUEST['updated'] ) : ?>
+<div><p><strong><?php _e( 'Options saved' ); ?></strong></p></div>
+<?php endif; ?>
+
+<form method="post" action="options.php">
+
+<?php settings_fields( 'theme_settings' ); ?>
+<?php $options = get_option( 'theme_settings' ); ?>
+
+<table>
+
+
+<tr valign="top">
+<th scope="row"><?php _e( 'Custom Logo' ); ?></th>
+<td><input id="theme_settings[custom_logo]" type="text" size="36" name="theme_settings[custom_logo]" value="<?php esc_attr_e( $options['custom_logo'] ); ?>" />
+<label for="theme_settings[custom_logo]"><?php _e( 'Upload a Logo' ); ?></label></td>
+</tr>
+
+
+<tr valign="top">
+<th scope="row"><?php _e( 'Color Scheme' ); ?></th>
+<td><select name="theme_settings[color_scheme]">
+<?php foreach ($color_scheme as $option) { ?>
+<option <?php if ($options['color_scheme'] == $option ){ echo 'selected="selected"'; } ?>><?php echo htmlentities($option); ?></option>
+<?php } ?>
+</select>                    
+<label for="theme_settings[color_scheme]"><?php _e( 'Choose Color Scheme' ); ?></label></td>
+</tr>
+
+
+<tr valign="top">
+<th scope="row"><?php _e( 'Disable Welcome Text' ); ?></th>
+<td><input id="theme_settings[extended_footer]" name="theme_settings[extended_footer]" type="checkbox" value="1" <?php checked( '1', $options['extended_footer'] ); ?> />
+<label for="theme_settings[disable_related_posts]"><?php _e( 'Check this box if you would like to disable the Welcome text' ); ?></label></td>
+</tr>
+
+<!-- Option 4: Tracking Code -->
+<tr valign="top">
+<th scope="row"><?php _e( 'Tracking Code' ); ?></th>
+<td><label for="theme_settings[tracking]"><?php _e( 'Enter your analytics tracking code' ); ?></label>
+<br />
+<textarea id="theme_settings[tracking]" name="theme_settings[tracking]" rows="5" cols="36"><?php esc_attr_e( $options['tracking'] ); ?></textarea></td>
+</tr>
+
+</table>
+
+<p><input name="submit" id="submit" value="Save Changes" type="submit"></p>
+</form>
+
+</div><!-- END wrap -->
+
+<?php
+}
+//sanitize and validate
+function options_validate( $input ) {
+    global $select_options, $radio_options;
+    if ( ! isset( $input['option1'] ) )
+        $input['option1'] = null;
+    $input['option1'] = ( $input['option1'] == 1 ? 1 : 0 );
+    $input['sometext'] = wp_filter_nohtml_kses( $input['sometext'] );
+    if ( ! isset( $input['radioinput'] ) )
+        $input['radioinput'] = null;
+    if ( ! array_key_exists( $input['radioinput'], $radio_options ) )
+        $input['radioinput'] = null;
+    $input['sometextarea'] = wp_filter_post_kses( $input['sometextarea'] );
+    return $input;
+}
