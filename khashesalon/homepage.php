@@ -27,12 +27,18 @@
 		</div>
 		</div>
 		
+		
+		
 		<h1>Featured Posts</h1>
 		<center><div class="postlogo">
 		<a href="https://phoenix.sheridanc.on.ca/~ccit2728/?p=279" title="ClickMe" id="range-logo">View Our Sale!</a>
 		<a href="https://phoenix.sheridanc.on.ca/~ccit2728/?p=276" title="ClickMe" id="range-logo2">Meet Our Stylists!</a>
 		<a href="https://phoenix.sheridanc.on.ca/~ccit2728/?p=274" title="ClickMe" id="range-logo3">Stay Tuned!</a>
 		</div></center>
+		
+		
+		<h1> Our Custom Field & MetaBox!  </h1>
+		<?php the_meta(); ?>
 		
 		<h1>Recent Posts</h1>
 		<p>
@@ -47,15 +53,7 @@
 			<?php endwhile; wp_reset_postdata(); ?>
 		</p>
 
-		
-		
-			<?php
-					// If comments are open or we have at least one comment, load up the comment template.
-					if ( comments_open() || get_comments_number() ) :
-						comments_template();
-					endif;
-				?>
-
+			
 		</main><!-- #main -->
 	</div>
 	</div><!-- #primary -->
