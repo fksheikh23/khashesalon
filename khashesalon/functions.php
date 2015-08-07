@@ -291,7 +291,7 @@ if ( false !== $_REQUEST['updated'] ) : ?>
 
 <table>
 
-<!-- Option of changing the icon image by users -->
+<!-- Option of changing the logo image by users -->
 <tr valign="top">
 <th scope="row"><?php _e( 'Custom Logo' ); ?></th>
 <td><input id="theme_settings[custom_logo]" type="text" size="36" name="theme_settings[custom_logo]" value="<?php esc_attr_e( $options['custom_logo'] ); ?>" />
