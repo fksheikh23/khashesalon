@@ -4,6 +4,7 @@
  * Footer Widgets
  */
 
+ // Conditional that if the footer sidebar is not activated, then return to the page
  if ( ! is_active_sidebar( 'sidebar-2' ) ) {
 		return;
  }
