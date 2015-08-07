@@ -6,6 +6,7 @@
  * @subpackage khashesalon
  */
  
+ //Calling for the header to be displayed
  get_header(); ?>
  
  <div id="primary" class="content-area">
@@ -17,7 +18,7 @@
 		<h1> <b> www.infolet.org </b> </h1>
 		<form name="myform"> 
 			<input type="text" name="colorname"> 
-			<input type = "button" value = "Change color" onclick = "changecolor()"> 
+			<input type = "button" value = "Change color" onclick = "changecolor()"> <!-- This is allowing the user to change the color of the text inputted by clicking on a button-->
 		</form> 
 		</body> 
 		

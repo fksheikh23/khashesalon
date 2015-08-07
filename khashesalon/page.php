@@ -12,6 +12,7 @@
  * @package khashesalon
  */
 
+ //Calling for the header to be displayed
 get_header(); ?>
 
 	<div id="primary" class="content-area">
@@ -33,4 +34,6 @@ get_header(); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
+<!-- Got rid of the calling for the sidebar -->
+<!-- Calling for the footer to be displayed-->
 <?php get_footer(); ?>

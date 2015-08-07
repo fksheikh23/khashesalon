@@ -7,6 +7,7 @@
  * @package khashesalon
  */
 
+ // Conditional that if the sidebar is not activated, then return
 if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 	return;
 }

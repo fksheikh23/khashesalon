@@ -210,7 +210,7 @@ function featured_product_of_the_week_add_meta_box() {
 		'high'
 	);
 }
-add_action( 'add_meta_boxes', 'featured_product_of_the_week_add_meta_box' );
+add_action( 'add_meta_boxes', 'featured_product_of_the_week_add_meta_box' ); //Puts the metabox into play
 
 function featured_product_of_the_week_featured_product_of_the_week_html( $post) {
 	wp_nonce_field( '_featured_product_of_the_week_featured_product_of_the_week_nonce', 'featured_product_of_the_week_featured_product_of_the_week_nonce' ); ?>
@@ -260,7 +260,7 @@ add_menu_page( __( 'Theme Settings' ), __( 'Theme Settings' ), 'manage_options',
 add_action( 'admin_init', 'theme_settings_init' );
 add_action( 'admin_menu', 'add_settings_page' );
 
-
+//Option of changing the color by users
 $color_scheme = array('default','blue','green',);
 
 
@@ -291,14 +291,14 @@ if ( false !== $_REQUEST['updated'] ) : ?>
 
 <table>
 
-
+<!-- Option of changing the icon image by users -->
 <tr valign="top">
 <th scope="row"><?php _e( 'Custom Logo' ); ?></th>
 <td><input id="theme_settings[custom_logo]" type="text" size="36" name="theme_settings[custom_logo]" value="<?php esc_attr_e( $options['custom_logo'] ); ?>" />
 <label for="theme_settings[custom_logo]"><?php _e( 'Upload a Logo' ); ?></label></td>
 </tr>
 
-
+<!-- Changing the background color option-->
 <tr valign="top">
 <th scope="row"><?php _e( 'Color Scheme' ); ?></th>
 <td><select name="theme_settings[color_scheme]">
@@ -309,7 +309,7 @@ if ( false !== $_REQUEST['updated'] ) : ?>
 <label for="theme_settings[color_scheme]"><?php _e( 'Choose Color Scheme' ); ?></label></td>
 </tr>
 
-
+<!-- Option of either enabling or disabling the Welcome text on the homepage-->
 <tr valign="top">
 <th scope="row"><?php _e( 'Disable Welcome Text' ); ?></th>
 <td><input id="theme_settings[extended_footer]" name="theme_settings[extended_footer]" type="checkbox" value="1" <?php checked( '1', $options['extended_footer'] ); ?> />

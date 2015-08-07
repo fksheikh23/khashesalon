@@ -7,6 +7,7 @@
  * @package khashesalon
  */
 
+ //Calling for the header to be displayed
 get_header(); ?>
 
 	<section id="primary" class="content-area">

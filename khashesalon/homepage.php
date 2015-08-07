@@ -6,6 +6,7 @@
  * @subpackage khashesalon
  */
  
+ //Calling for the header to be displayed on the homepage
  get_header(); ?>
  
 <?php while ( have_posts() ) : the_post(); ?>
@@ -15,10 +16,11 @@
 			<?php endwhile; // End of the loop. ?>
 
  <class="background">
+ <!-- The code below is for creating an enhanced customization of displayed photos -->		
  <div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 		<div class="photos"> 
-		<img src="http://s1.postimg.org/3nivnnc3j/image.jpg"/> 
+		<img src="http://s1.postimg.org/3nivnnc3j/image.jpg"/> <!--Grabbing the photos externally-->
 		<img src="http://s9.postimg.org/sjaqk2ar3/image.jpg"/> 
 		<img src="http://s12.postimg.org/ha4w4s0gt/image.jpg"/> 
 		<img src="http://s13.postimg.org/n0g9zt4pj/image.jpg"/> 
@@ -28,9 +30,9 @@
 		</div>
 		
 		
-		
+<!-- The code below is for creating an enhanced customization of featured posts-->		
 		<h1>Featured Posts</h1>
-		<center><div class="postlogo">
+		<center><div class="postlogo"> <!-- Each link directs the users to different posts on the website-->
 		<a href="https://phoenix.sheridanc.on.ca/~ccit2728/?p=279" title="ClickMe" id="range-logo">View Our Sale!</a>
 		<a href="https://phoenix.sheridanc.on.ca/~ccit2728/?p=276" title="ClickMe" id="range-logo2">Meet Our Stylists!</a>
 		<a href="https://phoenix.sheridanc.on.ca/~ccit2728/?p=274" title="ClickMe" id="range-logo3">Stay Tuned!</a>
@@ -58,6 +60,7 @@
 	</div>
 	</div><!-- #primary -->
 
+<!--Calling for the sidebar and footer to be displayed-->
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
 
