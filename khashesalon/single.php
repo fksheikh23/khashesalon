@@ -7,6 +7,7 @@
  * @package khashesalon
  */
 
+ // Calls to display the header
 get_header(); ?>
 
 	<div id="primary" class="content-area">
@@ -28,7 +29,8 @@ get_header(); ?>
 		<?php endwhile; // End of the loop. ?>
 
 		</main><!-- #main -->
-	</div><!-- #primary -->
+	</div><!-- #primary --> 
 
+<!-- Calls to display the sidebar and the footer-->
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
