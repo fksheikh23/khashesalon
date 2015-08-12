@@ -1,0 +1,21 @@
+.widget-title {
+	font-size: 22px;
+	color: white;
+}
+
+.testimonial {
+    font-size: 12px;
+    margin: 0 auto;
+    font-style: italic;
+    line-height: 16px;
+}
+
+.testimonial-client-name {
+    margin: 0 auto;
+    font-size: 12px;
+    color: #FF00FF;
+    font-style: italic;  
+}
+
+
+ 
