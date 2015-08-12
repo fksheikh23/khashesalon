@@ -13,9 +13,7 @@ function khashe_stylesheet() {
 	wp_enqueue_style( 'style', plugins_url( '/khashewidget/style.css', __FILE__ ) );
 }
 add_action( 'template_redirect', 'khashe_stylesheet' );
-?>
 
-<?php
 // Creates a new testimonials custom post type
 add_action( 'init', 'testimonials_post_type' );
 function testimonials_post_type() {
@@ -66,6 +64,7 @@ function testimonials_form() {
 // The code is used as a nonce in order to validate that the contents used above of the form request came directly from the present site
     wp_nonce_field( 'testimonials', 'testimonials' );
     ?>
+	
     <p> <!-- Labelling all fields in the form along with the input type being text only -->
         <label>Client's Name (optional)</label><br />
         <input type="text" value="<?php echo $client_name; ?>" name="testimonial[client_name]" size="40" />
@@ -193,8 +192,8 @@ function get_testimonial( $posts_per_page = 1, $orderby = 'none', $testimonial_i
 			$testimonials .= '<p class="testimonial-client-name"><cite>' . $cite . '</cite>';
 			$testimonials .= '</div>';
 			$testimonials .= '</aside>';
-			?>
-			<?php
+			
+		
 		endwhile; // End of the loop
 	$testimonials .='</div>'; //End of the div
 		wp_reset_postdata();
