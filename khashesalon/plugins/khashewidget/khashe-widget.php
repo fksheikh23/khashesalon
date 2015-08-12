@@ -168,7 +168,7 @@ function testimonials_columns( $column, $post_id ) {
     }
 }
 
-function get_testimonial( $posts_per_page = 1, $orderby = 'none', $testimonial_id = null ) {
+function get_testimonial( $posts_per_page = 1, $orderby = 'none', $testimonial_id = null ) { //get the testimonials page to show one post with no specific order
 	$args = array(
 		'posts_per_page' => (int) $posts_per_page,
 		'post_type' => 'testimonials',
@@ -228,10 +228,10 @@ class Testimonial_Widget extends WP_Widget {
  
         echo $args['before_widget']; 
  
-        if ( ! empty( $title ) )
+        if ( ! empty( $title ) ) //if the title is empty, output the before title, the title, or after title
             echo $before_title . $title . $after_title;
  
-        echo get_testimonial( $posts_per_page, $orderby, $testimonial_id );
+        echo get_testimonial( $posts_per_page, $orderby, $testimonial_id ); //output the get testimonials function with 1 post showing in no order
  
         echo $args['$after_widget'];
     }
