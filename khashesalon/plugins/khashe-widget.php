@@ -7,7 +7,7 @@
  * Version: 1.0 
  */
  
-//enqueues the plugin css sheet
+// This code will enqeue the style sheet for the widget
 
 function khashe_stylesheet() {
 	wp_enqueue_style( 'style', plugins_url( '/khashewidget/style.css', __FILE__ ) );
@@ -16,11 +16,11 @@ add_action( 'template_redirect', 'khashe_stylesheet' );
 ?>
 
 <?php
-//creates a new testimonials custom post type
+// Creates a new testimonials custom post type
 add_action( 'init', 'testimonials_post_type' );
 function testimonials_post_type() {
     $labels = array(
-//labels the items in the custom post type
+// Variables that labels the items in the custom post type 
         'name' => 'Khashes Testimonials',
         'singular_name' => 'Testimonial',
         'add_new' => 'Add New',
@@ -33,9 +33,9 @@ function testimonials_post_type() {
         'not_found_in_trash' => 'No Testimonials in the trash',
         'parent_item_colon' => '',
     );
- 
+ // Registers the custom post type of testimonial 
     register_post_type( 'testimonials', array(
-//registers the custom post type
+// Variables involved in the custom post type. Assigning constants TRUE and FALSE to the variables as booleans
         'labels' => $labels,
         'public' => true,
         'publicly_queryable' => true,
@@ -52,21 +52,21 @@ function testimonials_post_type() {
     ) );
 }
 
-//creates a metabox within this custom post that allows users to display info such as the clients name, service recieved, and their link
+// Creating a metabox within the custom post that allows users to display specific information 
 function testimonials_meta_boxes() {
     add_meta_box( 'testimonials_form', 'Testimonial Details', 'testimonials_form', 'testimonials', 'normal', 'high' );
 }
- 
+// The metabox that allows users to fill-in specific information like name, service received, and their link 
 function testimonials_form() {
     $post_id = get_the_ID();
     $testimonial_data = get_post_meta( $post_id, '_testimonial', true );
     $client_name = ( empty( $testimonial_data['client_name'] ) ) ? '' : $testimonial_data['client_name'];
     $source = ( empty( $testimonial_data['source'] ) ) ? '' : $testimonial_data['source'];
     $link = ( empty( $testimonial_data['link'] ) ) ? '' : $testimonial_data['link'];
- 
+// The code is used as a nonce in order to validate that the contents used above of the form request came directly from the present site
     wp_nonce_field( 'testimonials', 'testimonials' );
     ?>
-    <p>
+    <p> <!-- Labelling all fields in the form along with the input type being text only -->
         <label>Client's Name (optional)</label><br />
         <input type="text" value="<?php echo $client_name; ?>" name="testimonial[client_name]" size="40" />
     </p>
@@ -81,32 +81,32 @@ function testimonials_form() {
     <?php
 }
 
-//saves the entered testimonial data from the custom post type and meta box
+// The code below saves the entered testimonial data from the custom post type and meta box
 add_action( 'save_post', 'testimonials_save_post' );
 function testimonials_save_post( $post_id ) {
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
         return;
  
-    if ( ! empty( $_POST['testimonials'] ) && ! wp_verify_nonce( $_POST['testimonials'], 'testimonials' ) )
+    if ( ! empty( $_POST['testimonials'] ) && ! wp_verify_nonce( $_POST['testimonials'], 'testimonials' ) ) //Conditional: if the testimonials is empty, return
         return;
  
-    if ( ! empty( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) {
+    if ( ! empty( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) { //Conditional: if the post type is empty, return
         if ( ! current_user_can( 'edit_page', $post_id ) )
             return;
     } else {
-        if ( ! current_user_can( 'edit_post', $post_id ) )
+        if ( ! current_user_can( 'edit_post', $post_id ) ) //Conditional: if the user cannot edit the post, return
             return;
     }
  
-    if ( ! wp_is_post_revision( $post_id ) && 'testimonials' == get_post_type( $post_id ) ) {
-        remove_action( 'save_post', 'testimonials_save_post' );
+    if ( ! wp_is_post_revision( $post_id ) && 'testimonials' == get_post_type( $post_id ) ) { //Conditional
+        remove_action( 'save_post', 'testimonials_save_post' ); //Remove the post being saved if the condition above is not met
  
         wp_update_post( array(
             'ID' => $post_id,
             'post_title' => 'Testimonial - ' . $post_id
         ) );
  
-        add_action( 'save_post', 'testimonials_save_post' );
+        add_action( 'save_post', 'testimonials_save_post' ); //Perform the action of saving the post in the testimonial if the ID and post title fields are filled
     }
  
     if ( ! empty( $_POST['testimonial'] ) ) {
@@ -121,8 +121,8 @@ function testimonials_save_post( $post_id ) {
 }
 
 
- //customizes the column to display the meta-info we want
-add_filter( 'manage_edit-testimonials_columns', 'testimonials_edit_columns' );
+ // The code below customizes the column (sidebar) to display the meta-info we want
+add_filter( 'manage_edit-testimonials_columns', 'testimonials_edit_columns' ); // Hooking the function below to a specific filter action
 function testimonials_edit_columns( $columns ) {
     $columns = array(
         'cb' => '<input type="checkbox" />',
@@ -161,7 +161,7 @@ function testimonials_columns( $column, $post_id ) {
     }
 }
 
-function get_testimonial( $posts_per_page = 1, $orderby = 'none', $testimonial_id = null ) {
+function get_testimonial( $posts_per_page = 1, $orderby = 'none', $testimonial_id = null ) { // Returns an array of all the defined variables: posts per page, post type, order
 	$args = array(
 		'posts_per_page' => (int) $posts_per_page,
 		'post_type' => 'testimonials',
@@ -177,8 +177,8 @@ function get_testimonial( $posts_per_page = 1, $orderby = 'none', $testimonial_i
 	$testimonials = '';
 	if ( $query->have_posts() ) { 
 	
-	$testimonials .='<div id="wraptext">';
-		while ( $query->have_posts() ) : $query->the_post();
+	$testimonials .='<div id="wraptext">'; //Beginning of the div
+		while ( $query->have_posts() ) : $query->the_post(); //Beginning of while loop
 			$post_id = get_the_ID();
 			$testimonial_data = get_post_meta( $post_id, '_testimonial', true );
 			$client_name = ( empty( $testimonial_data['client_name'] ) ) ? '' : $testimonial_data['client_name'];
@@ -195,8 +195,8 @@ function get_testimonial( $posts_per_page = 1, $orderby = 'none', $testimonial_i
 			$testimonials .= '</aside>';
 			?>
 			<?php
-		endwhile;
-	$testimonials .='</div>';
+		endwhile; // End of the loop
+	$testimonials .='</div>'; //End of the div
 		wp_reset_postdata();
 	}
 
@@ -204,14 +204,14 @@ function get_testimonial( $posts_per_page = 1, $orderby = 'none', $testimonial_i
 }
 
 
-//creates the widget that will display the custom post type: testimonials
+//The code below will aim to create the widget that will display the custom post type: testimonials on the sidebar
 class Testimonial_Widget extends WP_Widget {
     public function __construct() {
         $widget_ops = array( 'classname' => 'testimonial_widget', 'description' => 'Display testimonial post type' );
         parent::__construct( 'testimonial_widget', 'Testimonials', $widget_ops );
     }
  
- //displays the content on the sidebar
+ // The code below will provide a display of the content in the widget on the sidebar
     public function widget( $args, $instance ) {
         extract( $args );
         $title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
@@ -229,7 +229,7 @@ class Testimonial_Widget extends WP_Widget {
         echo $args['$after_widget'];
     }
  
- //this code updates the widget if there is any change to the entered data
+ // This code updates the widget if there are any changes to the entered data
     public function update( $new_instance, $old_instance ) {
         $instance = $old_instance;
         $instance['title'] = strip_tags( $new_instance['title'] );
@@ -240,7 +240,7 @@ class Testimonial_Widget extends WP_Widget {
         return $instance;
     }
  
- //form that is created in the widget bar for users to enter their information in
+ // The form that is created in the widget bar for users to enter their information in with different given fields
     public function form( $instance ) {
         $instance = wp_parse_args( (array) $instance, array( 
         'title' => '', 'posts_per_page' => '1', 'orderby' => 'none', 'testimonial_id' => null ) );
